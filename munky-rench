@@ -1,0 +1,179 @@
+#!/bin/bash
+
+# Munky-rench is the swiss army knife for apk modding in bash
+
+
+DESC="Munky Rench is the swiss-army knife of apk modding in Linux"
+VERSION="VERSION 1.0 INITIAL RELEASE"
+
+LIST(){ 
+ls -l | cat -n 
+}
+
+#
+echo
+echo " ----miketheinkman---miketheinkman---miketheinkman----"
+echo
+echo "   MM       MM  U      U  N      N   K   K   Y     Y "
+echo "   M M     M M  U      U  NN     N   K  K    Y     Y "
+echo "   M  M   M  M  U      U  N N    N   KKK      Y   Y  " 
+echo "   M   M M   M  U      U  N  N   N   K  K      Y Y   "  
+echo "   M    M    M  U      U  N   N  N   K   K      Y    "
+echo "   M         M   U    U   N    N N   K    K     Y    "
+echo "   M         M    UUUU    N     NN   K     K    Y    "
+echo "                                                      "
+echo " ----RENCH---RENCH---RENCH---RENCH---RENCH---RENCH----" 
+echo                                          
+echo $VERSION  
+echo
+echo $DESC
+echo
+echo "ENTER to continue"
+
+read
+
+echo
+echo
+echo "                     APK MUNKY-BUSINESS "
+echo "------------------------------------------------------------"
+echo "1)unzip apk for theming" # ls as numbered list in for-modding, select project, unzip to theme directory
+
+
+echo "2)zip themed apk" # ls as numbered list in projects, select, zip
+
+
+echo "3)install frameworks - important for recompiling!!!" #instruct user, install framework
+
+
+echo "4)decompile apk for modding" #ls numbered, unzip, copy to keep folder
+
+
+echo "5)recompile" #ls numbered, recompile, copy needed files from keep, zip
+
+
+echo "6)sign apk" 
+
+
+echo "7)zipalign"
+
+                                                                                 
+echo "99)exit" 
+
+
+echo
+echo
+echo "------------------------------------------------------------"
+echo
+echo "pick your munky business"
+
+
+read n
+
+	case $n in
+
+	1)	
+
+             cd ~/android/munky-rench/place-here-for-modding
+
+		ls | cat -n
+
+			echo
+				
+				echo
+  
+
+			echo "Which file? Enter number of selection or 'x' to exit"
+
+				read choice
+
+
+		
+		
+			
+			if [ $choice = 'x' ]  ; then 
+	
+		
+					echo "are you sure? Press ENTER to exit"
+			
+						read
+			
+							exit
+
+			
+				else	
+			
+					cd ~/android/munky-rench/place-here-for-modding
+	
+
+						OUTPUTS=`ls | sed -n $choice'p' `	
+
+
+
+				
+	
+							mv $OUTPUTS ~/android/munky-rench/theme-projects
+			
+								
+								cd ~/android/munky-rench/theme-projects
+	
+	
+									unzip $OUTPUTS -d ~/android/munky-rench/theme-projects/$OUTPUTS
+
+											
+										mv $OUTPUTS ~/android/munky-rench/place-here-for-modding
+
+
+				echo
+				echo
+				echo
+				echo "--------------------------------------------------------------"
+				echo						 			
+				echo "Unzipped files in 'theme' directory. You can now replace images for customization "
+				echo "ENTER to return to munky menu"
+
+				read
+
+		
+		fi
+	
+				cd ~/android/munky-rench
+
+				
+					./munky-rench ;;
+
+
+	2)
+		
+       ls -l | cat -n
+		read
+		./munky-rench 
+exit 0
+		;;
+
+	3)
+		LIST
+
+			
+							;;
+						
+
+
+	
+
+	4)
+		;;
+
+	99)
+
+exit 0
+		exit#  ;;
+
+
+
+esac
+
+read 
+
+
+
+exit 0
