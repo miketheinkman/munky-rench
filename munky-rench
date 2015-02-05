@@ -161,7 +161,65 @@ exit 0
 	
 
 	4)
-		;;
+		cd ~/android/munky-rench/place-here-for-modding
+
+		ls | cat -n
+
+			echo
+				
+				echo
+  
+
+			echo "Which file? Enter number of selection or 'x' to exit"
+
+				read choice
+
+
+		
+		
+			
+			if [ $choice = 'x' ]  ; then 
+	
+		
+					echo "are you sure? Press ENTER to exit"
+			
+						read
+			
+							exit
+
+			
+				else	
+			
+					cd ~/android/munky-rench/place-here-for-modding
+	
+
+						OUTPUTS=`ls | sed -n $choice'p' `	
+
+
+
+							apktool -d $OUTPUTS  ~/android/munky-rench/mod-projects/$OUTPUTS
+
+											
+								
+
+
+				echo
+				echo
+				echo
+				echo "--------------------------------------------------------------"
+				echo						 			
+				echo "Decompiled files in 'mod' directory. You can now replace images and edit or add code "
+				echo "ENTER to return to munky menu"
+
+				read
+
+		
+		fi
+	
+				cd ~/android/munky-rench
+
+				
+					./munky-rench ;;
 
 	99)
 
