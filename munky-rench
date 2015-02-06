@@ -56,6 +56,9 @@ echo "6)sign apk"
 
 echo "7)zipalign"
 
+
+echo "8)recompile as system app- will not change signature"
+
                                                                                  
 echo "99)exit" 
 
@@ -109,18 +112,11 @@ read n
 
 
 
-				
-	
-							mv $OUTPUTS ~/android/munky-rench/theme-projects
 			
-								
-								cd ~/android/munky-rench/theme-projects
-	
-	
-									unzip $OUTPUTS -d ~/android/munky-rench/theme-projects/$OUTPUTS
+			unzip ~/android/munky-rench/place-here-for-modding/$OUTPUTS -d ~/android/munky-rench/theme-projects/$OUTPUTS
 
 											
-										mv $OUTPUTS ~/android/munky-rench/place-here-for-modding
+										
 
 
 				echo
@@ -144,11 +140,70 @@ read n
 
 	2)
 		
-       ls -l | cat -n
-		read
-		./munky-rench 
-exit 0
-		;;
+      		 cd ~/android/munky-rench/theme-projects
+
+		ls | cat -n
+
+			echo
+				
+				echo
+  
+
+			echo "Which file? Enter number of selection or 'x' to exit"
+
+				read choice
+
+
+		
+		
+			
+			if [ $choice = 'x' ]  ; then 
+	
+		
+					echo "are you sure? Press ENTER to exit"
+			
+						read
+			
+							exit
+
+			
+				else	
+	
+
+						OUTPUTS=`ls | sed -n $choice'p' `	
+
+
+
+				
+	
+							mv $OUTPUTS temp
+	
+	
+									zip -r -0 temp{.zip,} 
+	
+										mv temp.zip themed_$OUTPUTS
+
+											
+										mv -f themed_$OUTPUTS ~/android/munky-rench/out
+
+
+				echo
+				echo
+				echo
+				echo "--------------------------------------------------------------"
+				echo						 			
+				echo "themed apk in 'out' directory. You can now replace images for customization "
+				echo "ENTER to return to munky menu"
+
+				read
+
+		
+		fi
+	
+				cd ~/android/munky-rench
+
+				
+					./munky-rench ;;
 
 	3)
 		LIST
@@ -197,7 +252,7 @@ exit 0
 
 
 
-							apktool -d $OUTPUTS  ~/android/munky-rench/mod-projects/$OUTPUTS
+							apktool d $OUTPUTS  ~/android/munky-rench/mod-projects/$OUTPUTS
 
 											
 								
@@ -220,6 +275,218 @@ exit 0
 
 				
 					./munky-rench ;;
+
+	5)
+		cd ~/android/munky-rench/mod-projects
+
+		ls | cat -n
+
+			echo
+				
+				echo
+  
+
+			echo "Which file? Enter number of selection or 'x' to exit"
+
+				read choice
+
+
+		
+		
+			
+			if [ $choice = 'x' ]  ; then 
+	
+		
+					echo "are you sure? Press ENTER to exit"
+			
+						read
+			
+							exit
+
+			
+				else	
+	
+
+						OUTPUTS=`ls | sed -n $choice'p' `	
+
+
+
+							apktool b $OUTPUTS  ~/android/munky-rench/out/$OUTPUTS
+
+
+						mv ~/android/munky-rench/out/$OUTPUTS  ~/android/munky-rench/out/unsigned_$OUTPUTS
+
+
+
+											
+								
+
+
+				echo
+				echo
+				echo
+				echo "--------------------------------------------------------------"
+				echo						 			
+				echo "unsigned apk in 'out' directory. Sign and zipalign apk before install "
+				echo "ENTER to return to munky menu"
+
+				read
+
+		
+		fi
+	
+				cd ~/android/munky-rench
+
+			
+					./munky-rench ;;
+	
+		
+	7)
+		echo "place apk to be zipaligned in 'zipalign' directory"
+		
+		echo "press ENTER when ready"	
+
+			read	
+		
+
+		cd ~/android/munky-rench/zipalign
+
+		ls | cat -n
+
+			echo
+				
+				echo
+  
+
+			echo "Which file? Enter number of selection or 'x' to exit"
+
+				read choice
+
+
+		
+		
+			
+			if [ $choice = 'x' ]  ; then 
+	
+		
+					echo "are you sure? Press ENTER to exit"
+			
+						read
+			
+							exit
+
+			
+				else	
+	
+
+						OUTPUTS=`ls | sed -n $choice'p' `
+
+							
+
+
+
+							
+
+
+						
+
+
+
+											
+								
+
+
+				echo
+				echo
+				echo
+				echo "--------------------------------------------------------------"
+				echo						 			
+				echo "zipaligned apk in 'out' directory. "
+				echo "ENTER to return to munky menu"
+
+				read
+
+		
+		fi
+	
+				cd ~/android/munky-rench
+
+			
+					./munky-rench ;;
+	
+
+
+        8)
+		cd ~/android/munky-rench/mod-projects
+
+		ls | cat -n
+
+			echo
+				
+				echo
+  
+
+			echo "Which file? Enter number of selection or 'x' to exit"
+
+				read choice
+
+
+		
+		
+			
+			if [ $choice = 'x' ]  ; then 
+	
+		
+					echo "are you sure? Press ENTER to exit"
+			
+						read
+			
+							exit
+
+			
+				else	
+	
+
+						OUTPUTS=`ls | sed -n $choice'p' `	
+
+
+
+							apktool b $OUTPUTS  ~/android/munky-rench/out/$OUTPUTS
+
+	
+							unzip ~/android/munky-rench/out/$OUTPUTS -d ~/android/munky-rench/staging/
+
+
+					cp ~/android/munky-rench/place-here-for-modding/$OUTPUTS ~/android/munky-rench/keep
+
+									
+							unzip -o ~/android/munky-rench/keep/$OUTPUTS -d ~/android/munky-rench/keep/
+			
+				
+			#	 cp ~/android/munky-rench/keep/$OUTPUTS/
+
+											
+								
+
+
+				echo
+				echo
+				echo
+				echo "--------------------------------------------------------------"
+				echo						 			
+				echo "Compiled apk in 'out' directory. Sign and zipalign apk before install "
+				echo "ENTER to return to munky menu"
+
+				read
+
+		
+		fi
+	
+				cd ~/android/munky-rench
+
+				
+					./munky-rench ;;
+  
 
 	99)
 
