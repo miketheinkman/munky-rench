@@ -75,7 +75,22 @@ read n
 
 	case $n in
 
-	1) # UNZIP	
+	1) # UNZIP
+	
+	echo
+	echo
+	echo
+	echo "Unzipping an apk allows for the replacement of images,"
+	echo "but does not allow for modification of code."
+	echo
+	echo "After replacing images, you must re-zip."
+	echo
+	echo "For more info, select 'help' from 'munky menu'"
+	echo
+	echo "press ENTER to continue"
+	echo
+	
+	read
 
              cd ~/android/munky-rench/place-here-for-modding
 
@@ -140,7 +155,20 @@ read n
 
 
 	2)  # ZIP APK
-		
+	
+		echo
+		echo
+		echo
+		echo "Zipping an apk simply repackages the files into"
+		echo "a useable form."
+		echo
+		echo "After zipping, apk is ready to install."
+		echo
+		echo "For more info, select 'help' from 'munky menu'"
+		echo
+		echo "press ENTER to continue"
+		echo	
+		read
 	
 			 cd ~/android/munky-rench/theme-projects
 
@@ -209,6 +237,23 @@ read n
 
 	3) # INSTALL FRAMEWORK
 	
+	
+		echo
+		echo
+		echo
+		echo "Apks are designed to run within the existing"
+		echo "framework of Android.  You must install the framework-res.apk"
+		echo "from the /system/framework folder of your device."
+		echo
+		echo "Non AOSP roms usually have a proprietary framework also."
+		echo "The location of these second frameworks will vary."
+		echo
+		echo "For more info, select 'help' from 'munky menu'"
+		echo
+		echo "press ENTER to continue"
+		echo
+		read
+	
 		cd ~/android/munky-rench/frameworks	
 			
 		ls | cat -n
@@ -267,6 +312,22 @@ read n
 
 
 	4) # DECOMPILE
+	
+		echo
+		echo
+		echo
+		echo "Decompiling an apk reduces it to its editable source."
+		echo "You can change the behavior and features of the app,"
+		echo "IF you know what you are doing."
+		echo
+		echo "Java and Xml are the languages you will need to edit source."
+		echo
+		echo "For more info, select 'help' from 'munky menu'"
+		echo
+		echo "press ENTER to continue"
+		echo	
+		read
+	
 		cd ~/android/munky-rench/place-here-for-modding
 
 		ls | cat -n
@@ -328,6 +389,20 @@ read n
 					./munky-rench ;;
 
 	5) # RECOMPILE
+	
+	
+		echo
+		echo
+		echo
+		echo "This will compile the source into byte code."
+		echo "The app will not be ready to install until you sign it."
+		echo
+		echo "For more info, select 'help' from 'munky menu'"
+		echo
+		echo "press ENTER to continue"
+		echo	
+		read
+	
 		cd ~/android/munky-rench/mod-projects
 
 		ls | cat -n
@@ -393,6 +468,9 @@ read n
 	
 		
 	7) # ZIPALIGN
+	
+	
+	
 		echo "place apk to be zipaligned in 'zipalign' directory"
 		
 		echo "press ENTER when ready"	
@@ -468,6 +546,20 @@ read n
 
 
         8) # COMPILE AS SYSTEM APP
+        
+        				echo
+		echo
+		echo
+		echo "Compiles apk using original META_INF."
+		
+		
+		echo
+		echo "For more info, select 'help' from 'munky menu'"
+		echo
+		echo "press ENTER to continue"
+		echo	
+		read
+        
 		cd ~/android/munky-rench/mod-projects
 
 		ls | cat -n
