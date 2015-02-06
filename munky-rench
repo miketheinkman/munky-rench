@@ -1,14 +1,16 @@
 #!/bin/bash
-
+#
+#
+#
+#
 # Munky-rench is the swiss army knife for apk modding in bash
+# Licensed under GPL
 
 
 DESC="Munky Rench is the swiss-army knife of apk modding in Linux"
 VERSION="VERSION 1.0 INITIAL RELEASE"
 
-LIST(){ 
-ls -l | cat -n 
-}
+
 
 #
 echo
@@ -140,7 +142,8 @@ read n
 
 	2)
 		
-      		 cd ~/android/munky-rench/theme-projects
+	
+			 cd ~/android/munky-rench/theme-projects
 
 		ls | cat -n
 
@@ -206,14 +209,63 @@ read n
 					./munky-rench ;;
 
 	3)
-		LIST
+	
+		cd ~/android/munky-rench/frameworks	
+			
+		ls | cat -n
+
+			echo
+				
+				echo
+  
+
+			echo "Which file? Enter number of selection or 'x' to exit"
+
+				read choice
+
+
+		
+		
+			
+			if [ $choice = 'x' ]  ; then 
+	
+		
+					echo "are you sure? Press ENTER to exit"
+			
+						read
+			
+							exit
 
 			
-							;;
-						
-
-
+				else	
 	
+
+						OUTPUTS=`ls | sed -n $choice'p' `	
+
+
+
+				
+	
+						apktool if $OUTPUTS
+
+				echo
+				echo
+				echo
+				echo "--------------------------------------------------------------"
+				echo						 			
+				echo "Repeat process to add other frameworks "
+				echo "ENTER to return to munky menu"
+
+				read
+
+		
+		fi
+	
+				cd ~/android/munky-rench
+
+				
+					./munky-rench ;;
+
 
 	4)
 		cd ~/android/munky-rench/place-here-for-modding
