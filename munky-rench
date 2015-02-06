@@ -38,19 +38,18 @@ echo
 echo
 echo "                     APK MUNKY-BUSINESS "
 echo "------------------------------------------------------------"
-echo "1)unzip apk for theming" # ls as numbered list in for-modding, select project, unzip to theme directory
+echo "1)unzip apk for theming" # functional
 
 
-echo "2)zip themed apk" # ls as numbered list in projects, select, zip
+echo "2)zip themed apk" # functional
 
 
-echo "3)install frameworks - important for recompiling!!!" #instruct user, install framework
+echo "3)install frameworks - important for recompiling!!!" # test
+
+echo "4)decompile apk for modding" # functional
 
 
-echo "4)decompile apk for modding" #ls numbered, unzip, copy to keep folder
-
-
-echo "5)recompile" #ls numbered, recompile, copy needed files from keep, zip
+echo "5)recompile" # functional
 
 
 echo "6)sign apk" 
@@ -76,7 +75,7 @@ read n
 
 	case $n in
 
-	1)	
+	1) # UNZIP	
 
              cd ~/android/munky-rench/place-here-for-modding
 
@@ -140,7 +139,7 @@ read n
 					./munky-rench ;;
 
 
-	2)
+	2)  # ZIP APK
 		
 	
 			 cd ~/android/munky-rench/theme-projects
@@ -208,7 +207,7 @@ read n
 				
 					./munky-rench ;;
 
-	3)
+	3) # INSTALL FRAMEWORK
 	
 		cd ~/android/munky-rench/frameworks	
 			
@@ -267,7 +266,7 @@ read n
 					./munky-rench ;;
 
 
-	4)
+	4) # DECOMPILE
 		cd ~/android/munky-rench/place-here-for-modding
 
 		ls | cat -n
@@ -328,7 +327,7 @@ read n
 				
 					./munky-rench ;;
 
-	5)
+	5) # RECOMPILE
 		cd ~/android/munky-rench/mod-projects
 
 		ls | cat -n
@@ -393,7 +392,7 @@ read n
 					./munky-rench ;;
 	
 		
-	7)
+	7) # ZIPALIGN
 		echo "place apk to be zipaligned in 'zipalign' directory"
 		
 		echo "press ENTER when ready"	
@@ -468,7 +467,7 @@ read n
 	
 
 
-        8)
+        8) # COMPILE AS SYSTEM APP
 		cd ~/android/munky-rench/mod-projects
 
 		ls | cat -n
@@ -515,7 +514,12 @@ read n
 							unzip -o ~/android/munky-rench/keep/$OUTPUTS -d ~/android/munky-rench/keep/
 			
 				
-			#	 cp ~/android/munky-rench/keep/$OUTPUTS/
+				 cp ~/android/munky-rench/keep/$OUTPUTS/META-INF ~/android/munky-rench/staging/
+				 
+				 	zip -r -0 ~/android/munky-rench/staging{.zip,}
+				 	
+				 		mv ~/android/munky-rench/staging.zip ~/android/munky-rench/out/system_$OUTPUTS
+			
 
 											
 								
@@ -526,7 +530,7 @@ read n
 				echo
 				echo "--------------------------------------------------------------"
 				echo						 			
-				echo "Compiled apk in 'out' directory. Sign and zipalign apk before install "
+				echo "Compiled SYSTEM apk in 'out' directory."
 				echo "ENTER to return to munky menu"
 
 				read
