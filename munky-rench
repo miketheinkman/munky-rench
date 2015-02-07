@@ -38,6 +38,62 @@ echo
 echo
 echo "                     APK MUNKY-BUSINESS "
 echo "------------------------------------------------------------"
+
+#frameworks
+if [ ! -d "~/android/munky-rench/frameworks" ]
+
+	then  
+		mkdir ~/android/munky-rench/frameworks
+
+
+
+#place-here-for-modding
+if [ ! -d "~/android/munky-rench/place-here-for-modding" ]
+
+	then 
+ 		mkdir ~/android/munky-rench/place-here-for-modding
+
+
+
+#zipalign
+if [ ! -d "~/android/munky-rench/zipalign" ]
+
+	then 
+		 mkdir ~/android/munky-rench/zipalign
+
+
+
+#sign
+if [ ! -d "~/android/munky-rench/sign" ]
+
+	then 
+		 mkdir ~/android/munky-rench/sign
+
+#theme
+if [ ! -d "~/android/munky-rench/theme-projects" ]
+
+	then
+
+		mkdir ~/android/munky-rench/theme-projects
+
+		
+		fi
+			fi
+				fi
+					fi
+						fi
+	
+
+
+#choices
+echo
+echo
+echo "---------------------MUNKY BUSINESS--------------------------"
+echo "-------------------------------------------------------------"
+echo
+echo
+echo
+
 echo "1)unzip apk for theming" # functional
 
 
@@ -59,6 +115,9 @@ echo "7)zipalign"
 
 
 echo "8)recompile as system app- will not change signature"
+
+
+echo "9)install app - requires adb"
 
                                                                                  
 echo "99)exit" 
@@ -159,8 +218,10 @@ read n
 		echo
 		echo
 		echo
-		echo "Zipping an apk simply repackages the files into"
-		echo "a useable form."
+		echo "Zipping an apk simply repackages the files from"
+		echo "an unzipped apk into a useable form."
+		echo
+		echo "Is not a substitute for compiling apk"
 		echo
 		echo "After zipping, apk is ready to install."
 		echo
@@ -207,11 +268,13 @@ read n
 				
 	
 							mv $OUTPUTS temp
+
+							cd temp
 	
 	
-									zip -r -0 temp{.zip,} 
+									zip -r -0 $OUTPUTS *
 	
-										mv temp.zip themed_$OUTPUTS
+										mv $OUTPUTS themed_$OUTPUTS
 
 											
 										mv -f themed_$OUTPUTS ~/android/munky-rench/out
@@ -222,7 +285,7 @@ read n
 				echo
 				echo "--------------------------------------------------------------"
 				echo						 			
-				echo "themed apk in 'out' directory. You can now replace images for customization "
+				echo "themed apk in 'out' directory. Enjoy your new theme"
 				echo "ENTER to return to munky menu"
 
 				read
@@ -230,7 +293,11 @@ read n
 		
 		fi
 	
-				cd ~/android/munky-rench
+				cd ~/android/munky-rench/theme-projects
+
+					rm -Rf temp
+		
+					cd ~/android/munky-rench
 
 				
 					./munky-rench ;;
@@ -466,7 +533,85 @@ read n
 			
 					./munky-rench ;;
 	
+	6)
+
+				echo
+		echo
+		echo
+		echo "This will sign the apk"
+		echo "The app will be ready to install after you sign it."
+		echo
+		echo "For more info, select 'help' from 'munky menu'"
+		echo
+		echo "press ENTER to continue"
+		echo	
+		read
+	
+		cd ~/android/munky-rench/out
+
+		ls | cat -n
+
+			echo
+				
+				echo
+  
+
+			echo "Which file? Enter number of selection or 'x' to exit"
+
+				read choice
+
+
 		
+		
+			
+			if [ $choice = 'x' ]  ; then 
+	
+		
+					echo "are you sure? Press ENTER to exit"
+			
+						read
+			
+							exit
+
+			
+				else	
+	
+
+						OUTPUTS=`ls | sed -n $choice'p' `	
+
+
+
+							cd ~/android/munky-rench/TOOLS
+
+
+						java -jar signapk.jar testkey.x509.pem /home/mike/android/munky-rench/TOOLS/testkey.pk8 ~/android/munky-rench/out/$OUTPUTS ~/android/munky-rench/out/signed_$OUTPUTS
+
+
+
+											
+								
+
+
+				echo
+				echo
+				echo
+				echo "--------------------------------------------------------------"
+				echo						 			
+				echo "signed apk in 'out' directory. Sign and zipalign apk before install "
+				echo "ENTER to return to munky menu"
+
+				read
+
+		
+		fi
+	
+				cd ~/android/munky-rench
+
+			
+					./munky-rench ;;
+			
+
+
 	7) # ZIPALIGN
 	
 	
@@ -509,14 +654,14 @@ read n
 	
 
 						OUTPUTS=`ls | sed -n $choice'p' `
-
+						
 							
 
+					cd ~/android/munky-rench/TOOLS
 
+				./zipalign 4 ~/android/munky-rench/zipalign/$OUTPUTS ~/android/munky-rench/out/zipaligned_$OUTPUTS			
 
-							
-
-
+				
 						
 
 
@@ -596,21 +741,40 @@ read n
 
 							apktool b $OUTPUTS  ~/android/munky-rench/out/$OUTPUTS
 
-	
+#unzip compiled apk to staging
 							unzip ~/android/munky-rench/out/$OUTPUTS -d ~/android/munky-rench/staging/
 
+#copy original to keep
+					cp ~/android/munky-rench/place-here-for-modding/$OUTPUTS ~/android/munky-rench/$OUTPUTS
 
-					cp ~/android/munky-rench/place-here-for-modding/$OUTPUTS ~/android/munky-rench/keep
+#unzip original		
 
-									
-							unzip -o ~/android/munky-rench/keep/$OUTPUTS -d ~/android/munky-rench/keep/
+							unzip ~/android/munky-rench/$OUTPUTS -d ~/android/munky-rench/keep/
 			
-				
-				 cp ~/android/munky-rench/keep/$OUTPUTS/META-INF ~/android/munky-rench/staging/
-				 
-				 	zip -r -0 ~/android/munky-rench/staging{.zip,}
+#copy meta to staging
+				 cd ~/android/munky-rench/keep/
+
+							 mv META-INF ~/android/munky-rench/staging/META-INF
+
+
+
+				cd ~/android/munky-rench/staging
+#zip staging				 
+				 	zip -r -0 $OUTPUTS *
 				 	
-				 		mv ~/android/munky-rench/staging.zip ~/android/munky-rench/out/system_$OUTPUTS
+				 		mv $OUTPUTS ~/android/munky-rench/out/system_$OUTPUTS
+
+							cd ~/android/munky-rench/out
+								rm $OUTPUTS
+							
+								cd ~/android/munky-rench
+	
+								rm -Rf keep
+
+								rm -Rf staging
+
+								rm $OUTPUTS
+
 			
 
 											
@@ -632,14 +796,90 @@ read n
 	
 				cd ~/android/munky-rench
 
+				rmdir staging
+
 				
+					./munky-rench ;;
+
+
+	9)
+
+			echo
+		echo
+		echo
+		echo "This will install selected apk to your device."
+		echo "Does not work for system apps"
+		echo
+		echo "For more info, select 'help' from 'munky menu'"
+		echo
+		echo "press ENTER to continue"
+		echo	
+		read
+	
+		cd ~/android/munky-rench/mod-projects
+
+		ls | cat -n
+
+			echo
+				
+				echo
+  
+
+			echo "Which file? Enter number of selection or 'x' to exit"
+
+				read choice
+
+
+		
+		
+			
+			if [ $choice = 'x' ]  ; then 
+	
+		
+					echo "are you sure? Press ENTER to exit"
+			
+						read
+			
+							exit
+
+			
+				else	
+	
+
+						OUTPUTS=`ls | sed -n $choice'p' `	
+
+
+
+							adb install $OUTPUTS
+
+
+											
+								
+
+
+				echo
+				echo
+				echo
+				echo "--------------------------------------------------------------"
+				echo						 			
+				echo "app installed."
+				echo "ENTER to return to munky menu"
+
+				read
+
+		
+		fi
+	
+				cd ~/android/munky-rench
+
+			
 					./munky-rench ;;
   
 
 	99)
 
-exit 0
-		exit#  ;;
+
+		exit ;;
 
 
 

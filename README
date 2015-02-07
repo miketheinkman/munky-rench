@@ -1,0 +1,13 @@
+#MUNKY RENCH
+is the apk swiss army knife for linux. 
+
+At this time, all listed features function, but I have not tested the output apks.
+
+Features include unzip, zip, install frameworks, decompile and recompile, signapk, zipalign, and adb install.
+It will also be very noob friendly, with a tutorial feel
+
+Future features may include kitchen functionality, other toolkit features, some optimization things, flashable zip creation, and possibly an install script
+to verify and install java, git, apktool, signapk, etc etc...
+
+The goal is to provide a single tool that does the job of as many as possible, while maintaining a user-friendly explanitory atmosphere that informs the inexperienced without getting in the way of the power users 
+
