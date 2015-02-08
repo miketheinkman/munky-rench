@@ -12,27 +12,42 @@ VERSION="VERSION 1.0 INITIAL RELEASE"
 
 
 
-#
+echo 
+echo 
+echo "   88.       .88  888      88  8888      88  888    888  888     888    "
+echo "   8888.   .8'88  888      88  888 88    88  888  88       88   88      "
+echo "   888'8. .8' 88  888      88  888   88  88  888888          888      "
+echo "   888 '8.8'  88  888      88  888     8888  888  88         888    "
+echo "   888  '8'   88  88888888888  888       88  888    888      888              "
+echo "                                                 "
 echo
-echo " ----miketheinkman---miketheinkman---miketheinkman----"
+echo "       d888888   88888888  8888     88  888888888  888    88  "
+echo "      8:   888   888       888 88   88  888        888    88  "
+echo "       9888888   888888    888  88  88  888        888888888  "
+echo "      88   888   888       888   88 88  888        888    88  "
+echo "    88     888   88888888  888    8888  888888888  888    88  "
 echo
-echo "   MM       MM  U      U  N      N   K   K   Y     Y "
-echo "   M M     M M  U      U  NN     N   K  K    Y     Y "
-echo "   M  M   M  M  U      U  N N    N   KKK      Y   Y  " 
-echo "   M   M M   M  U      U  N  N   N   K  K      Y Y   "  
-echo "   M    M    M  U      U  N   N  N   K   K      Y    "
-echo "   M         M   U    U   N    N N   K    K     Y    "
-echo "   M         M    UUUU    N     NN   K     K    Y    "
-echo "                                                      "
-echo " ----RENCH---RENCH---RENCH---RENCH---RENCH---RENCH----" 
-echo                                          
-echo $VERSION  
+echo "                               FOR   "
 echo
-echo $DESC
 echo
-echo "ENTER to continue"
+echo "            88     8888  88b  88  88   88  88.   .88      "
+echo "            88      88   888b 88  88   88   '88 88'   "
+echo "            88      88   88 8b88  88   88     :8:          "
+echo "            88      88   88  888  88   88   ,88 88,              "
+echo "            888888 8888  88   88  8888888  88.   .88           "
+echo 
+
+
+
+echo "                        ENTER to continue"
 
 read
+echo $DESC                                        
+echo $VERSION  
+echo
+echo "      ----miketheinkman---miketheinkman---miketheinkman----" 
+echo
+
 
 echo
 echo
@@ -40,39 +55,52 @@ echo "                     APK MUNKY-BUSINESS "
 echo "------------------------------------------------------------"
 
 #frameworks
-if [ ! -d "~/android/munky-rench/frameworks" ]
+if [ -d "~/android/munky-rench/frameworks" ]
 
-	then  
+	then  :
+		else
+
 		mkdir ~/android/munky-rench/frameworks
 
 
 
 #place-here-for-modding
-if [ ! -d "~/android/munky-rench/place-here-for-modding" ]
+if [ -d "~/android/munky-rench/place-here-for-modding" ]
 
-	then 
+	then 	:
+
+		else
+
  		mkdir ~/android/munky-rench/place-here-for-modding
 
 
 
 #zipalign
-if [ ! -d "~/android/munky-rench/zipalign" ]
+if [ -d "~/android/munky-rench/zipalign" ]
 
-	then 
+	then :
+
+		else
+
 		 mkdir ~/android/munky-rench/zipalign
 
 
 
 #sign
-if [ ! -d "~/android/munky-rench/sign" ]
+if [ -d "~/android/munky-rench/sign" ]
 
-	then 
+	then  :
+
+		else
+ 
 		 mkdir ~/android/munky-rench/sign
 
 #theme
-if [ ! -d "~/android/munky-rench/theme-projects" ]
+if [ -d "~/android/munky-rench/theme-projects" ]
 
-	then
+	then :
+
+		else
 
 		mkdir ~/android/munky-rench/theme-projects
 
@@ -91,7 +119,7 @@ echo
 echo "---------------------MUNKY BUSINESS--------------------------"
 echo "-------------------------------------------------------------"
 echo
-echo
+echo "place apps in 'place-here-for-modding' directory"
 echo
 
 echo "1)unzip apk for theming" # functional
