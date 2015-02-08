@@ -459,7 +459,7 @@ read n
 
 
 
-							apktool d $OUTPUTS  ~/android/munky-rench/mod-projects/$OUTPUTS
+							apktool d -f $OUTPUTS  -o ~/android/munky-rench/mod-projects/$OUTPUTS
 
 											
 								
@@ -532,7 +532,7 @@ read n
 
 
 
-							apktool b $OUTPUTS  ~/android/munky-rench/out/$OUTPUTS
+							apktool b -f $OUTPUTS -o ~/android/munky-rench/out/$OUTPUTS
 
 
 						mv ~/android/munky-rench/out/$OUTPUTS  ~/android/munky-rench/out/unsigned_$OUTPUTS
@@ -608,8 +608,8 @@ read n
 	
 
 						OUTPUTS=`ls | sed -n $choice'p' `
-						SIGN=`echo $OUTPUTS| sed -r 's/^.{9}//' `
-						OUTPUTS=$SIGN
+						#SIGN=`echo $OUTPUTS| sed -r 's/^.{9}//' `
+						#OUTPUTS=$SIGN
 
 
 
@@ -771,7 +771,7 @@ read n
 
 
 
-							apktool b $OUTPUTS  ~/android/munky-rench/out/$OUTPUTS
+							apktool b -f $OUTPUTS -o ~/android/munky-rench/out/$OUTPUTS
 
 #unzip compiled apk to staging
 							unzip ~/android/munky-rench/out/$OUTPUTS -d ~/android/munky-rench/staging/
