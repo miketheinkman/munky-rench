@@ -94,6 +94,9 @@ echo
 echo
 echo
 
+
+echo
+
 echo "1)unzip apk for theming" # functional
 
 
@@ -119,7 +122,9 @@ echo "8)recompile as system app- will not change signature"
 
 echo "9)install app - requires adb"
 
-                                                                                 
+echo "89)help and about" 
+
+                                                                               
 echo "99)exit" 
 
 
@@ -134,6 +139,8 @@ read n
 
 	case $n in
 
+
+	
 	1) # UNZIP
 	
 	echo
@@ -875,6 +882,71 @@ read n
 			
 					./munky-rench ;;
   
+
+89)
+
+			
+			
+			echo
+			echo
+			echo
+			echo
+
+		echo "When I made the switch to linux, I noticed that almost everything assumed some"
+		echo "level of expertise. Program A assumed familiarity with bash, Program B assumed"
+		echo "I knew how to add something to my PATH. The problem was, I didn't know anything."
+		echo "I knew enough to switch to linux, but not enough to use it. I knew that I had a"
+		echo "lot to learn, but I wanted to tinker with Apks RITE NAO!!!"
+		echo
+		echo "What I am trying to do with this tool is provide a stop-gap program for noobs so"
+		echo "they can tinker with apks before they really understand the process. There are so"
+		echo "many stand-alones in windows for this type of thing, but the ones in linux have many"
+		echo "dependencies, that it sets the learning curve a little higher. I just want to help"
+		echo "people adjust to modding in linux in a graduated way, while still providing a useful"
+		echo "tool for more experienced users that don't want to type the same command fifteen"
+		echo "times"
+		echo
+		echo
+		echo
+		echo "ENTER to continue"
+read
+echo
+	echo
+		echo " ----miketheinkman---miketheinkman---miketheinkman----"
+		echo
+		echo "   MM       MM  U      U  N      N   K   K   Y     Y "
+		echo "   M M     M M  U      U  NN     N   K  K    Y     Y "
+		echo "   M  M   M  M  U      U  N N    N   KKK      Y   Y  " 
+		echo "   M   M M   M  U      U  N  N   N   K  K      Y Y   "  
+		echo "   M    M    M  U      U  N   N  N   K   K      Y    "
+		echo "   M         M   U    U   N    N N   K    K     Y    "
+		echo "   M         M    UUUU    N     NN   K     K    Y    "
+		echo "                                                      "
+		echo " ----RENCH---RENCH---RENCH---RENCH---RENCH---RENCH----"
+echo
+echo
+echo
+echo "1)zip/unzip" # 7za explanation
+
+
+echo "2)apktool" # 
+
+
+echo "3)signapk" # 
+
+
+echo "4)zipalign" # 
+
+
+echo "5)why linux is better for modding" 
+
+read
+
+
+./munky-rench
+
+			;;    
+
 
 	99)
 
