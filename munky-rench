@@ -72,7 +72,7 @@ if [ -d "~/android/munky-rench/place-here-for-modding" ]
 		else
 
  		mkdir ~/android/munky-rench/place-here-for-modding
-
+mkdir ~/android/munky-rench/mod-projects
 
 
 #zipalign
