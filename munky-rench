@@ -790,8 +790,9 @@ read n
 #copy meta to staging
 				 cd $dir/keep/
 
-							 mv META-INF $dir/staging/META-INF
-
+							mv META-INF $dir/staging/META-INF
+								
+						      	mv -f AndroidManifest.xml $dir/staging/
 
 
 				cd $dir/staging
