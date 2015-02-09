@@ -6,7 +6,7 @@
 # Munky-rench is the swiss army knife for apk modding in bash
 # Licensed under GPL
 
-
+dir=`pwd `
 DESC="Munky Rench is the swiss-army knife of apk modding in Linux"
 VERSION="VERSION 1.0 INITIAL RELEASE"
 
@@ -21,11 +21,11 @@ echo "   888 '8.8'  88  888      88  888     8888  888  88         888    "
 echo "   888  '8'   88  88888888888  888       88  888    888      888              "
 echo "                                                 "
 echo
-echo "       d888888   88888888  8888     88  888888888  888    88  "
-echo "      8:   888   888       888 88   88  888        888    88  "
-echo "       9888888   888888    888  88  88  888        888888888  "
-echo "      88   888   888       888   88 88  888        888    88  "
-echo "    88     888   88888888  888    8888  888888888  888    88  "
+echo "     .d8888888   88888888  8888     88  888888888  888    88  "
+echo "    :88    888   888       888 88   88  888        888    88  "
+echo "      '9888888   888888    888  88  88  888        888888888  "
+echo "      888  888   888       888   88 88  888        888    88  "
+echo "   8888    888   88888888  888    8888  888888888  888    88  "
 echo
 echo "                               FOR   "
 echo
@@ -55,54 +55,54 @@ echo "                     APK MUNKY-BUSINESS "
 echo "------------------------------------------------------------"
 
 #frameworks
-if [ -d "~/android/munky-rench/frameworks" ]
+if [ -d "$dir/frameworks" ]
 
 	then  :
 		else
 
-		mkdir ~/android/munky-rench/frameworks
+		mkdir $dir/frameworks
 
 
 
 #place-here-for-modding
-if [ -d "~/android/munky-rench/place-here-for-modding" ]
+if [ -d "$dir/place-here-for-modding" ]
 
 	then 	:
 
 		else
 
- 		mkdir ~/android/munky-rench/place-here-for-modding
-mkdir ~/android/munky-rench/mod-projects
+ 		mkdir $dir/place-here-for-modding
+mkdir $dir/mod-projects
 
 
 #zipalign
-if [ -d "~/android/munky-rench/zipalign" ]
+if [ -d "$dir/zipalign" ]
 
 	then :
 
 		else
 
-		 mkdir ~/android/munky-rench/zipalign
+		 mkdir $dir/zipalign
 
 
 
 #sign
-if [ -d "~/android/munky-rench/sign" ]
+if [ -d "$dir/sign" ]
 
 	then  :
 
 		else
  
-		 mkdir ~/android/munky-rench/sign
+		 mkdir $dir/sign
 
 #theme
-if [ -d "~/android/munky-rench/theme-projects" ]
+if [ -d "$dir/theme-projects" ]
 
 	then :
 
 		else
 
-		mkdir ~/android/munky-rench/theme-projects
+		mkdir $dir/theme-projects
 
 		
 		fi
@@ -118,9 +118,13 @@ echo
 echo
 echo "---------------------MUNKY BUSINESS--------------------------"
 echo "-------------------------------------------------------------"
+echo "$DESC"
+echo "$VERSION"
+echo "-------------------------------------------------------------"
 echo
 echo "place apps in 'place-here-for-modding' directory"
 echo
+echo "-------------------------------------------------------------"
 
 echo "1)unzip apk for theming" # functional
 
@@ -179,7 +183,7 @@ read n
 	
 	read
 
-             cd ~/android/munky-rench/place-here-for-modding
+             cd $dir/place-here-for-modding
 
 		ls | cat -n
 
@@ -208,7 +212,7 @@ read n
 			
 				else	
 			
-					cd ~/android/munky-rench/place-here-for-modding
+					cd $dir/place-here-for-modding
 	
 
 						OUTPUTS=`ls | sed -n $choice'p' `	
@@ -216,7 +220,7 @@ read n
 
 
 			
-			unzip ~/android/munky-rench/place-here-for-modding/$OUTPUTS -d ~/android/munky-rench/theme-projects/$OUTPUTS
+			unzip $dir/place-here-for-modding/$OUTPUTS -d $dir/theme-projects/$OUTPUTS
 
 											
 										
@@ -235,7 +239,7 @@ read n
 		
 		fi
 	
-				cd ~/android/munky-rench
+				cd $dir
 
 				
 					./munky-rench ;;
@@ -259,7 +263,7 @@ read n
 		echo	
 		read
 	
-			 cd ~/android/munky-rench/theme-projects
+			 cd $dir/theme-projects
 
 		ls | cat -n
 
@@ -305,7 +309,7 @@ read n
 										mv $OUTPUTS themed_$OUTPUTS
 
 											
-										mv -f themed_$OUTPUTS ~/android/munky-rench/out
+										mv -f themed_$OUTPUTS $dir/out
 
 
 				echo
@@ -321,11 +325,11 @@ read n
 		
 		fi
 	
-				cd ~/android/munky-rench/theme-projects
+				cd $dir/theme-projects
 
 					rm -Rf temp
 		
-					cd ~/android/munky-rench
+					cd $dir
 
 				
 					./munky-rench ;;
@@ -349,7 +353,7 @@ read n
 		echo
 		read
 	
-		cd ~/android/munky-rench/frameworks	
+		cd $dir/frameworks	
 			
 		ls | cat -n
 
@@ -400,7 +404,7 @@ read n
 		
 		fi
 	
-				cd ~/android/munky-rench
+				cd $dir
 
 				
 					./munky-rench ;;
@@ -423,7 +427,7 @@ read n
 		echo	
 		read
 	
-		cd ~/android/munky-rench/place-here-for-modding
+		cd $dir/place-here-for-modding
 
 		ls | cat -n
 
@@ -452,14 +456,14 @@ read n
 			
 				else	
 			
-					cd ~/android/munky-rench/place-here-for-modding
+					cd $dir/place-here-for-modding
 	
 
 						OUTPUTS=`ls | sed -n $choice'p' `	
 
 
 
-							apktool d -f $OUTPUTS  -o ~/android/munky-rench/mod-projects/$OUTPUTS
+							$dir/TOOLS/apktool d -f $OUTPUTS  -o $dir/mod-projects/$OUTPUTS
 
 											
 								
@@ -478,7 +482,7 @@ read n
 		
 		fi
 	
-				cd ~/android/munky-rench
+				cd $dir
 
 				
 					./munky-rench ;;
@@ -498,7 +502,7 @@ read n
 		echo	
 		read
 	
-		cd ~/android/munky-rench/mod-projects
+		cd $dir/mod-projects
 
 		ls | cat -n
 
@@ -532,10 +536,10 @@ read n
 
 
 
-							apktool b -f $OUTPUTS -o ~/android/munky-rench/out/$OUTPUTS
+							$dir/TOOLS/apktool b -f $OUTPUTS -o $dir/out/$OUTPUTS
 
 
-						mv ~/android/munky-rench/out/$OUTPUTS  ~/android/munky-rench/out/unsigned_$OUTPUTS
+						mv $dir/out/$OUTPUTS  $dir/out/unsigned_$OUTPUTS
 
 
 
@@ -556,7 +560,7 @@ read n
 		
 		fi
 	
-				cd ~/android/munky-rench
+				cd $dir
 
 			
 					./munky-rench ;;
@@ -575,7 +579,7 @@ read n
 		echo	
 		read
 	
-		cd ~/android/munky-rench/out
+		cd $dir/out
 		
 		
 
@@ -613,10 +617,10 @@ read n
 
 
 
-							cd ~/android/munky-rench/TOOLS
+							cd $dir/TOOLS
 
 
-						java -jar signapk.jar testkey.x509.pem /home/mike/android/munky-rench/TOOLS/testkey.pk8 ~/android/munky-rench/out/$OUTPUTS ~/android/munky-rench/out/signed_$OUTPUTS
+						java -jar signapk.jar testkey.x509.pem /home/mike/android/munky-rench/TOOLS/testkey.pk8 $dir/out/$OUTPUTS $dir/out/signed_$OUTPUTS
 
 
 
@@ -637,7 +641,7 @@ read n
 		
 		fi
 	
-				cd ~/android/munky-rench
+				cd $dir
 
 			
 					./munky-rench ;;
@@ -655,7 +659,7 @@ read n
 			read	
 		
 
-		cd ~/android/munky-rench/zipalign
+		cd $dir/zipalign
 
 		ls | cat -n
 
@@ -689,9 +693,9 @@ read n
 						
 							
 
-					cd ~/android/munky-rench/TOOLS
+					cd $dir/TOOLS
 
-				./zipalign 4 ~/android/munky-rench/zipalign/$OUTPUTS ~/android/munky-rench/out/zipaligned_$OUTPUTS			
+				./zipalign 4 $dir/zipalign/$OUTPUTS $dir/out/zipaligned_$OUTPUTS			
 
 				
 						
@@ -715,7 +719,7 @@ read n
 		
 		fi
 	
-				cd ~/android/munky-rench
+				cd $dir
 
 			
 					./munky-rench ;;
@@ -737,7 +741,7 @@ read n
 		echo	
 		read
         
-		cd ~/android/munky-rench/mod-projects
+		cd $dir/mod-projects
 
 		ls | cat -n
 
@@ -771,35 +775,35 @@ read n
 
 
 
-							apktool b -f $OUTPUTS -o ~/android/munky-rench/out/$OUTPUTS
+							$dir/TOOLS/apktool b -f $OUTPUTS -o $dir/out/$OUTPUTS
 
 #unzip compiled apk to staging
-							unzip ~/android/munky-rench/out/$OUTPUTS -d ~/android/munky-rench/staging/
+							unzip $dir/out/$OUTPUTS -d $dir/staging/
 
 #copy original to keep
-					cp ~/android/munky-rench/place-here-for-modding/$OUTPUTS ~/android/munky-rench/$OUTPUTS
+					cp $dir/place-here-for-modding/$OUTPUTS $dir/$OUTPUTS
 
 #unzip original		
 
-							unzip ~/android/munky-rench/$OUTPUTS -d ~/android/munky-rench/keep/
+							unzip $dir/$OUTPUTS -d $dir/keep/
 			
 #copy meta to staging
-				 cd ~/android/munky-rench/keep/
+				 cd $dir/keep/
 
-							 mv META-INF ~/android/munky-rench/staging/META-INF
+							 mv META-INF $dir/staging/META-INF
 
 
 
-				cd ~/android/munky-rench/staging
+				cd $dir/staging
 #zip staging				 
 				 	zip -r -0 $OUTPUTS *
 				 	
-				 		mv $OUTPUTS ~/android/munky-rench/out/system_$OUTPUTS
+				 		mv $OUTPUTS $dir/out/system_$OUTPUTS
 
-							cd ~/android/munky-rench/out
+							cd $dir/out
 								rm $OUTPUTS
 							
-								cd ~/android/munky-rench
+								cd $dir
 	
 								rm -Rf keep
 
@@ -826,7 +830,7 @@ read n
 		
 		fi
 	
-				cd ~/android/munky-rench
+				cd $dir
 
 				rmdir staging
 
@@ -848,7 +852,7 @@ read n
 		echo	
 		read
 	
-		cd ~/android/munky-rench/mod-projects
+		cd $dir/mod-projects
 
 		ls | cat -n
 
@@ -902,7 +906,7 @@ read n
 		
 		fi
 	
-				cd ~/android/munky-rench
+				cd $dir
 
 			
 					./munky-rench ;;
