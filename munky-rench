@@ -923,6 +923,12 @@ echo
 		echo "   M         M    UUUU    N     NN   K     K    Y    "
 		echo "                                                      "
 		echo " ----RENCH---RENCH---RENCH---RENCH---RENCH---RENCH----"
+		
+	 esac
+	 
+	 read 
+	 
+	 
 echo
 echo
 echo
@@ -940,12 +946,44 @@ echo "4)zipalign" #
 
 echo "5)why linux is better for modding" 
 
-read
 
+	read n
+	
+case $n in 
+	
+	
+	1)
+	
+	echo "Unzipping apks for theming is done to avoid having to resign the apk before install. An unzipped app is not nearly as customizable as a decompiled app. Only the images can be changed."
+	echo
+	echo "When compiling as a system app, unzipping is also used to copy the META_INF and AndroidManifest.xml from the original apk to the new apk. This preserves the original signature, which is important, because a system app with the wrong signature will not work, resulting in bootloops, and force close loops"
+	
+	read
+	
+	./munky-rench
 
-./munky-rench
+			;; 
+			
+	2)
+	
+	echo "Apktool unpacks apks from the byte code used by the compiler into the source code used by the developer, allowing you to make edits in smali files that will change the functionality of an app, or xml files that will change the appearance."
+	echo
+	echo "Smali/Baksmali means assemble/disassemble in Icelandic and is named that way due to the Dalvik virtual machine being named after an Icelandic fishing village. If you are not familiar with Smali, You are probably going to break your apk. That is fine, we learn through our mistakes, but always save a copy of the original and be prepared to reflash if you bootloop."
+	echo
+	echo "Xml is a markup language, similar to HTML in that it controls how information is displayed. Xml files have color information, app name, and pretty much any text throughout the app. For instance, values/colors.xml contains color info. Xml can break the apk also, so don't make too many changes without testing.,"
+	
+
+                ./munky-rench
+
+			;; 
+			
+			esac
+			
+		./munky-rench
 
 			;;    
+	
+
 
 
 	99)
