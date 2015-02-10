@@ -926,8 +926,17 @@ echo
 		
 	 esac
 	 
-	 read 
-	 
+	 read
+	
+echo	
+echo	
+echo	
+echo
+
+echo "       8    8  88888  8      88888.          "
+echo "       8____8  8__    8      8     8         "
+echo "       8    8  8      8      88888'          "
+echo "       8    8  88888  88888  8               "
 	 
 echo
 echo
@@ -954,6 +963,17 @@ case $n in
 	
 	1)
 	
+	echo
+	echo
+	echo
+	echo
+	
+	echo "        8888888  888  88888.       "
+	echo "           .8'    8   8     8      "
+	echo "         .8'      8   88888'        "
+	echo "        8888888  888  8          "
+	
+	
 	echo "Unzipping apks for theming is done to avoid having to resign the apk before install. An unzipped app is not nearly as customizable as a decompiled app. Only the images can be changed."
 	echo
 	echo "When compiling as a system app, unzipping is also used to copy the META_INF and AndroidManifest.xml from the original apk to the new apk. This preserves the original signature, which is important, because a system app with the wrong signature will not work, resulting in bootloops, and force close loops"
@@ -965,6 +985,17 @@ case $n in
 			;; 
 			
 	2)
+		
+	echo
+	echo
+	echo
+	echo
+	
+	echo "          8     8888   8  _8  88888  888    888   8              " 
+	echo "         8 8    8   8  888_     8   8   8  8   8  8                "
+	echo "        8___8   888'   8   8    8   8   8  8   8  8                "  
+	echo "       8     8  8      8    8   8    888    888   8888              "
+	
 	
 	echo "Apktool unpacks apks from the byte code used by the compiler into the source code used by the developer, allowing you to make edits in smali files that will change the functionality of an app, or xml files that will change the appearance."
 	echo
