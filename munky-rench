@@ -782,42 +782,44 @@ read n
 
 
 
-							$dir/TOOLS/apktool b -f $OUTPUTS -o $dir/out/$OUTPUTS
+							$dir/TOOLS/apktool b -c $OUTPUTS -o $dir/out/$OUTPUTS
+							
+							mv $dir/out/$OUTPUTS $dir/out/system_$OUTPUTS 
 
 #unzip compiled apk to staging
-							unzip $dir/out/$OUTPUTS -d $dir/staging/
+						#	unzip $dir/out/$OUTPUTS -d $dir/staging/
 
 #copy original to keep
-					cp $dir/place-here-for-modding/$OUTPUTS $dir/$OUTPUTS
+				#	cp $dir/place-here-for-modding/$OUTPUTS $dir/$OUTPUTS
 
 #unzip original		
 
-							unzip $dir/$OUTPUTS -d $dir/keep/
+						#	unzip $dir/$OUTPUTS -d $dir/keep/
 			
 #copy meta to staging
-				 cd $dir/keep/
+		#		 cd $dir/keep/
 
-							mv META-INF $dir/staging/META-INF
+			#				mv META-INF $dir/staging/META-INF
 								
-						      	mv -f AndroidManifest.xml $dir/staging/
+		#				      	mv -f AndroidManifest.xml $dir/staging/
 
 
-				cd $dir/staging
+			#	cd $dir/staging
 #zip staging				 
-				 	zip -r -0 $OUTPUTS *
+#				 	zip -r -0 $OUTPUTS *
 				 	
-				 		mv $OUTPUTS $dir/out/system_$OUTPUTS
+#				 		mv $OUTPUTS $dir/out/system_$OUTPUTS
 
-							cd $dir/out
-								rm $OUTPUTS
+#							cd $dir/out
+#								rm $OUTPUTS
 							
-								cd $dir
+#								cd $dir
 	
-								rm -Rf keep
+#								rm -Rf keep
 
-								rm -Rf staging
+#								rm -Rf staging
 
-								rm $OUTPUTS
+#								rm $OUTPUTS
 
 			
 
