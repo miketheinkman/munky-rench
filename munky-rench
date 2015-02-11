@@ -126,6 +126,9 @@ echo "place apps in 'place-here-for-modding' directory"
 echo
 echo "-------------------------------------------------------------"
 
+
+echo
+
 echo "1)unzip apk for theming" # functional
 
 
@@ -151,7 +154,9 @@ echo "8)recompile as system app- will not change signature"
 
 echo "9)install app - requires adb"
 
-                                                                                 
+echo "89)help and about" 
+
+                                                                               
 echo "99)exit" 
 
 
@@ -166,6 +171,8 @@ read n
 
 	case $n in
 
+
+	
 	1) # UNZIP
 	
 	echo
@@ -912,6 +919,140 @@ read n
 			
 					./munky-rench ;;
   
+
+89)
+
+			
+			
+			echo
+			echo
+			echo
+			echo
+
+		echo "When I made the switch to linux, I noticed that almost everything assumed some"
+		echo "level of expertise. Program A assumed familiarity with bash, Program B assumed"
+		echo "I knew how to add something to my PATH. The problem was, I didn't know anything."
+		echo "I knew enough to switch to linux, but not enough to use it. I knew that I had a"
+		echo "lot to learn, but I wanted to tinker with Apks RITE NAO!!!"
+		echo
+		echo "What I am trying to do with this tool is provide a stop-gap program for noobs so"
+		echo "they can tinker with apks before they really understand the process. There are so"
+		echo "many stand-alones in windows for this type of thing, but the ones in linux have many"
+		echo "dependencies, that it sets the learning curve a little higher. I just want to help"
+		echo "people adjust to modding in linux in a graduated way, while still providing a useful"
+		echo "tool for more experienced users that don't want to type the same command fifteen"
+		echo "times"
+		echo
+		echo
+		echo
+		echo "ENTER to continue"
+read
+echo
+	echo
+		echo " ----miketheinkman---miketheinkman---miketheinkman----"
+		echo
+		echo "   MM       MM  U      U  N      N   K   K   Y     Y "
+		echo "   M M     M M  U      U  NN     N   K  K    Y     Y "
+		echo "   M  M   M  M  U      U  N N    N   KKK      Y   Y  " 
+		echo "   M   M M   M  U      U  N  N   N   K  K      Y Y   "  
+		echo "   M    M    M  U      U  N   N  N   K   K      Y    "
+		echo "   M         M   U    U   N    N N   K    K     Y    "
+		echo "   M         M    UUUU    N     NN   K     K    Y    "
+		echo "                                                      "
+		echo " ----RENCH---RENCH---RENCH---RENCH---RENCH---RENCH----"
+		
+	 esac
+	 
+	 read
+	
+echo	
+echo	
+echo	
+echo
+
+echo "       8    8  88888  8      88888.          "
+echo "       8____8  8__    8      8     8         "
+echo "       8    8  8      8      88888'          "
+echo "       8    8  88888  88888  8               "
+	 
+echo
+echo
+echo
+echo "1)zip/unzip" # 7za explanation
+
+
+echo "2)apktool" # 
+
+
+echo "3)signapk" # 
+
+
+echo "4)zipalign" # 
+
+
+echo "5)why linux is better for modding" 
+
+
+	read n
+	
+case $n in 
+	
+	
+	1)
+	
+	echo
+	echo
+	echo
+	echo
+	
+	echo "        8888888  888  88888.       "
+	echo "           .8'    8   8     8      "
+	echo "         .8'      8   88888'        "
+	echo "        8888888  888  8          "
+	
+	
+	echo "Unzipping apks for theming is done to avoid having to resign the apk before install. An unzipped app is not nearly as customizable as a decompiled app. Only the images can be changed."
+	echo
+	echo "When compiling as a system app, unzipping is also used to copy the META_INF and AndroidManifest.xml from the original apk to the new apk. This preserves the original signature, which is important, because a system app with the wrong signature will not work, resulting in bootloops, and force close loops"
+	
+	read
+	
+	./munky-rench
+
+			;; 
+			
+	2)
+		
+	echo
+	echo
+	echo
+	echo
+	
+	echo "          8     8888   8  _8  88888  888    888   8              " 
+	echo "         8 8    8   8  888_     8   8   8  8   8  8                "
+	echo "        8___8   888'   8   8    8   8   8  8   8  8                "  
+	echo "       8     8  8      8    8   8    888    888   8888              "
+	
+	
+	echo "Apktool unpacks apks from the byte code used by the compiler into the source code used by the developer, allowing you to make edits in smali files that will change the functionality of an app, or xml files that will change the appearance."
+	echo
+	echo "Smali/Baksmali means assemble/disassemble in Icelandic and is named that way due to the Dalvik virtual machine being named after an Icelandic fishing village. If you are not familiar with Smali, You are probably going to break your apk. That is fine, we learn through our mistakes, but always save a copy of the original and be prepared to reflash if you bootloop."
+	echo
+	echo "Xml is a markup language, similar to HTML in that it controls how information is displayed. Xml files have color information, app name, and pretty much any text throughout the app. For instance, values/colors.xml contains color info. Xml can break the apk also, so don't make too many changes without testing.,"
+	
+
+                ./munky-rench
+
+			;; 
+			
+			esac
+			
+		./munky-rench
+
+			;;    
+	
+
+
 
 	99)
 
