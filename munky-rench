@@ -154,6 +154,8 @@ echo "8)recompile as system app- will not change signature"
 
 echo "9)install app - requires adb"
 
+echo "10)make flashable zip for system apk"
+
 echo "89)help and about" 
 
                                                                                
@@ -470,7 +472,7 @@ read n
 
 
 
-							$dir/TOOLS/apktool d -f $OUTPUTS  -o $dir/mod-projects/$OUTPUTS
+							$dir/.TOOLS/apktool d -f $OUTPUTS  -o $dir/mod-projects/$OUTPUTS
 
 											
 								
@@ -543,7 +545,7 @@ read n
 
 
 
-							$dir/TOOLS/apktool b -f $OUTPUTS -o $dir/out/$OUTPUTS
+							$dir/.TOOLS/apktool b -f $OUTPUTS -o $dir/out/$OUTPUTS
 
 
 						mv $dir/out/$OUTPUTS  $dir/out/unsigned_$OUTPUTS
@@ -624,10 +626,10 @@ read n
 
 
 
-							cd $dir/TOOLS
+							cd $dir/.TOOLS
 
 
-						java -jar signapk.jar testkey.x509.pem /home/mike/android/munky-rench/TOOLS/testkey.pk8 $dir/out/$OUTPUTS $dir/out/signed_$OUTPUTS
+						java -jar signapk.jar testkey.x509.pem /home/mike/android/munky-rench/.TOOLS/testkey.pk8 $dir/out/$OUTPUTS $dir/out/signed_$OUTPUTS
 
 
 
@@ -700,7 +702,7 @@ read n
 						
 							
 
-					cd $dir/TOOLS
+					cd $dir/.TOOLS
 
 				./zipalign 4 $dir/zipalign/$OUTPUTS $dir/out/zipaligned_$OUTPUTS			
 
@@ -782,44 +784,9 @@ read n
 
 
 
-							$dir/TOOLS/apktool b -c $OUTPUTS -o $dir/out/$OUTPUTS
+							$dir/.TOOLS/apktool b -c $OUTPUTS -o $dir/out/$OUTPUTS
 							
 							mv $dir/out/$OUTPUTS $dir/out/system_$OUTPUTS 
-
-#unzip compiled apk to staging
-						#	unzip $dir/out/$OUTPUTS -d $dir/staging/
-
-#copy original to keep
-				#	cp $dir/place-here-for-modding/$OUTPUTS $dir/$OUTPUTS
-
-#unzip original		
-
-						#	unzip $dir/$OUTPUTS -d $dir/keep/
-			
-#copy meta to staging
-		#		 cd $dir/keep/
-
-			#				mv META-INF $dir/staging/META-INF
-								
-		#				      	mv -f AndroidManifest.xml $dir/staging/
-
-
-			#	cd $dir/staging
-#zip staging				 
-#				 	zip -r -0 $OUTPUTS *
-				 	
-#				 		mv $OUTPUTS $dir/out/system_$OUTPUTS
-
-#							cd $dir/out
-#								rm $OUTPUTS
-							
-#								cd $dir
-	
-#								rm -Rf keep
-
-#								rm -Rf staging
-
-#								rm $OUTPUTS
 
 			
 
@@ -920,9 +887,98 @@ read n
 
 			
 					./munky-rench ;;
-  
 
-89)
+	10)
+		
+		cd $dir/.TOOLS
+
+			cp flashable.zip $dir/flashable.zip
+			
+				cd $dir
+
+					unzip -q flashable.zip -d $dir/
+					
+					cp -r flashable restore
+
+				
+						rm flashable.zip
+echo
+echo
+echo
+echo
+echo
+echo
+echo "------------------------------------------------------------------------------"
+echo "Place the apk you want to flash in the proper folder inside 'flashable' directory. For example, framework-res goes in /flashable/system/framework/ "
+echo
+echo "To be safe, place the original app in the same place inside the folder named 'restore'. We will copy both zips to your device, so if the modded app causes a bootloop, we can flash the restore zip to fix it "
+echo
+echo
+echo "press ENTER when apks are in place and you are ready to zip"
+
+read
+
+rm -rf $dir/zips
+
+	mkdir $dir/zips
+
+		cd flashable
+		
+			zip -q -r -0 flashable *
+
+
+				
+				mv $dir/flashable/flashable.zip $dir/zips/flashable.zip
+
+					cd $dir
+						
+						rm -rf flashable
+		
+
+		cd restore
+		
+			zip -q -r -0 restore *
+
+
+				mv $dir/restore/restore.zip $dir/zips/restore.zip
+
+					cd $dir
+
+						rm -rf restore
+echo
+echo
+echo "Do you want to push the zips to your device? [y or n]?"
+
+
+read input
+
+	if [ $input = "y" ]
+		
+		then
+
+			$dir/.TOOLS/adb devices
+		
+				$dir/.TOOLS/adb push $dir/zips /sdcard/
+
+		echo "zips should now be in the root of external storage on your device"
+
+				./munky-rench
+
+	elif [ $input = "n" ]	
+
+		then			
+				
+
+
+			cd $dir
+			./munky-rench
+fi
+
+./munky-rench
+
+	  				;;
+
+	89)
 
 			
 			
