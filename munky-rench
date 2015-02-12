@@ -152,12 +152,16 @@ echo "7)zipalign"
 echo "8)recompile as system app- will not change signature"
 
 
-echo "9)install app - requires adb"
+echo "9)install app "
 
 echo "10)make flashable zip for system apk"
-
+echo
+echo "11)adb/fastboot, backup/restore/flash"
+echo
+# echo "12)heimdall"
+# echo
 echo "89)help and about" 
-
+echo
                                                                                
 echo "99)exit" 
 
@@ -977,6 +981,111 @@ fi
 ./munky-rench
 
 	  				;;
+	  				
+	11)
+	
+		 esac
+		 
+		 cd $dir/.TOOLS
+	 
+								adb=$dir/.TOOLS/adb
+								fboot=$dir/.TOOLS/fastboot
+	
+echo	
+echo	
+echo "         ADB/FASTBOOT BACKUP/RESTORE/FLASH MENU"	
+echo "------------------------------------------------"
+
+echo "               8     888b.   888b,   "
+echo "              8 8    8    8  8__ P       "
+echo "             8___8   8    8  8    b     "
+echo "            8     8  888P'   8888'        "
+	 
+echo "------------------------------------------------"
+echo
+echo
+echo "1)push files to device" # 
+
+
+echo "2)pull files from device" # 
+
+
+echo "3)backup efs" # 
+
+
+echo "4)install custom recovery" # 
+
+
+echo "5)backup and pull system img" 
+echo
+echo "-------------------------------------------------"
+echo "What do you want to do?"
+
+
+	read n
+	
+case $n in 
+	
+	
+	1) # push
+	
+	cd $dir
+		
+		mkdir push-files-from-here
+		
+			echo
+			echo
+			echo
+			echo "Place files you want to push to your device in 'push-files-from-here' directory"
+			echo
+			echo "push ENTER to continue"
+		
+		read
+$adb devices
+
+	$adb push $dir/push-files-from-here /sdcard/
+
+		echo
+		echo
+		echo
+	echo "Files have been pushed to the root of device internal sd card"
+	echo
+	echo "press enter to return to munky-menu"
+	
+read
+
+	cd $dir 
+		
+		./munky-rench
+
+	
+		;;
+	
+	2)  # pull
+	
+cd $dir/.TOOLS
+
+	$adb shell
+	
+	
+###################################################################################################	
+		;;
+	
+	3)
+	
+		;;
+	
+	4)
+	
+		;;
+	
+	5)
+	
+		;;
+	
+
+
+esac
 
 	89)
 
