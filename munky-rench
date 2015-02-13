@@ -996,10 +996,7 @@ echo
 echo "         ADB/FASTBOOT BACKUP/RESTORE/FLASH MENU"	
 echo "------------------------------------------------"
 
-echo "               8     888b.   888b,   "
-echo "              8 8    8    8  8__ P       "
-echo "             8___8   8    8  8    b     "
-echo "            8     8  888P'   8888'        "
+echo
 	 
 echo "------------------------------------------------"
 echo
@@ -1062,16 +1059,139 @@ read
 		;;
 	
 	2)  # pull
+
+cd $dir
+
+mkdir pulled-files-go-here
 	
 cd $dir/.TOOLS
 
-	$adb shell
+echo
+echo
+echo "type the path of the file you want to pull and press ENTER"	
+#echo "Do you know the exact location of the file you want to pull? [ y or n ]?"
+
+	#read answer
+
+#if [ $answer = "y" ]
+
+	#then
+		#echo
+		#echo
+		#echo "enter complete path of file here and press ENTER"
+
+			read path
+
+				$adb devices
+				
+					$adb pull $path $dir/pulled-files-go-here/
+
+						cd $dir
+
+							echo "files will be in 'pulled-files-go-here' directory"
+
+							./munky-rench
+
+	#elif [ $answer = "n" ]
+		
+		#then
+
+			#$adb shell ls | cat -n
+				
+				#echo
+				#echo
+				#echo
+				#echo "Is the file you want to pull on this level of the file system [ y or n ]?"
+				#echo
+				#echo 
+				#echo
+				#echo 
+
+			#read yorn
+#
+			#while [ $yorn = "n" ]
+				
+					#do
+
+						#echo
+						#echo
+						#echo
+						#echo "enter the number of the directory you want to look in and press ENTER"
+						#echo
+						#echo
+
+							#read dirnum
+
+							#newdir=`$adb shell ls | sed -n $dirnum'p' `
+
+
+
+							      #   $adb shell cd newdir
+
+												
+
+										
+						#echo 
+						#echo
+						#echo "Is the file you want to pull on this level of the file system [ y or n ]?"
+						#echo
+						#echo 
+						#echo
+						#echo 
+							#read yorn
+
+
+					#done
+						
+
+			#if [ $yorn = "y" ]
+		
+				#then
+
+					#echo
+					#echo
+					#echo
+					#echo "enter the number of the file you want to pull and press ENTER"
+					#echo
+					#echo
+						#read filenum
+
+							#	pullfile=`$adb shell ls | sed -n $filenum'p' `
+								#path=`pwd `
+
+					#$adb devices
+
+						#$adb pull $path/pullfile $dir/pulled-files-go-here
+#
+							#echo "files will be in 'pulled-files-go-here' directory"
+
+													
+					
+
+				
+			
+#fi
+
+
+
+	#fi	
 	
-	
-###################################################################################################	
 		;;
 	
 	3)
+
+	cd $dir/.TOOLS		
+
+		$adb push efs 
+
+			$adb shell "
+su; ./efs"
+cd $dir
+./munky-rench
+
+
+
+
 	
 		;;
 	

@@ -1,0 +1,4 @@
+su ;
+
+dd if=/dev/block/mmcblk0p10 of=/sdcard/modemst1.bin bs=512 ;
+dd if=/dev/block/mmcblk0p11 of=/sdcard/modemst2.bin bs=512 ;
