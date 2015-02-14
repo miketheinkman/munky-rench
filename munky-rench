@@ -1056,17 +1056,8 @@ read
 	
 		;;
 	
-<<<<<<< HEAD
-	2)  # pull
-
-cd $dir
-
-mkdir pulled-files-go-here
-||||||| merged common ancestors
-	2)  # pull
-=======
 	2)  # pull   broken
->>>>>>> 3a073a2c4be4a7f538bdcb7d0008af16dfc84795
+
 	
 cd $dir/.TOOLS
 
@@ -1182,24 +1173,7 @@ echo "type the path of the file you want to pull and press ENTER"
 	
 		;;
 	
-<<<<<<< HEAD
-	3)
 
-	cd $dir/.TOOLS		
-
-		$adb push efs 
-
-			$adb shell "
-su; ./efs"
-cd $dir
-./munky-rench
-
-
-
-
-||||||| merged common ancestors
-	3)
-=======
 	3)  # broken
 	$adb shell
 	cd /dev/block/platform/*/by-name
@@ -1210,7 +1184,7 @@ cd $dir
 	echo "Which partition would you like to copy?"
 	
 		
->>>>>>> 3a073a2c4be4a7f538bdcb7d0008af16dfc84795
+
 	
 		;;
 	
