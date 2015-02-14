@@ -156,10 +156,9 @@ echo "9)install app "
 
 echo "10)make flashable zip for system apk"
 echo
-echo "11)adb/fastboot, backup/restore/flash"
+echo "11)adb/fastboot/heimdall, push/pull/flash etc"
 echo
-# echo "12)heimdall"
-# echo
+
 echo "89)help and about" 
 echo
                                                                                
@@ -432,7 +431,7 @@ read n
 		echo "You can change the behavior and features of the app,"
 		echo "IF you know what you are doing."
 		echo
-		echo "Java and Xml are the languages you will need to edit source."
+		echo "SMALI and Xml are the languages you will need to edit source."
 		echo
 		echo "For more info, select 'help' from 'munky menu'"
 		echo
@@ -1005,13 +1004,16 @@ echo "1)push files to device" #
 echo "2)pull files from device" # 
 
 
-echo "3)backup partitions (system/data/efs etc)" # 
+echo "3)heimdall flash custom recovery (SAMSUNG)" # 
 
 
-echo "4)install custom recovery" # 
+echo "4)fastboot flash custom recovery "
 
 
-echo "5)backup and pull system img" 
+
+
+
+
 echo
 echo "-------------------------------------------------"
 echo "What do you want to do?"
@@ -1056,7 +1058,7 @@ read
 	
 		;;
 	
-	2)  # pull   broken
+	2)  # pull   
 
 	
 cd $dir/.TOOLS
@@ -1174,27 +1176,20 @@ echo "type the path of the file you want to pull and press ENTER"
 		;;
 	
 
-	3)  # broken
-	$adb shell
-	cd /dev/block/platform/*/by-name
-	ls | cat -n 
-	
-	echo
-	echo
-	echo "Which partition would you like to copy?"
-	
-		
 
-	
-		;;
-	
-	4)
+	3)
 	
 		cd $dir
 			
 			mkdir flash-recovery-from-here
 				
 				cd flash-recovery-from-here
+echo
+echo "-----------------------------------------------------------------"
+echo "place recovery in 'flash-recovery-from-here' directory"
+echo "ENTER to continue"
+
+	read
 		
 					ls | cat -n
 					
@@ -1207,27 +1202,86 @@ echo "type the path of the file you want to pull and press ENTER"
 					
 					read recnum
 					
-					recovery=`ls | sed -n $recnum'p'
+					recovery=`ls | sed -n $recnum'p' `
 					
 						mv $recovery recovery.img
 							
-					 		$adb reboot-bootloader	
-					
-				 				$fboot flash recovery [recovery.img]
+					 		$adb reboot-bootloader
+
+							cd $dir/.TOOLS	
+							
+ 							./heimdall detect
+
+							./heimdall flash --recovery $dir/flash-recovery-from-here/recovery.img
+
 				 				
 				 				echo
 				 				echo
 				 				echo "Recovery flashed press ENTER to return to munky menu"
+						read
 				 				
 				 cd $dir
 				 
 			./munky-rench
 	
 		;;
+
+	4)
+
+echo
+echo
+echo
+echo "Heimdall is an open-source, linux compatabile program for flashing Samsung devices. It is basically Odin with command line functionality. Press ENTER to continue." 
+		
 	
-	5)
+		cd $dir
+			
+			mkdir flash-recovery-from-here
+				
+				cd flash-recovery-from-here
+echo
+echo "-----------------------------------------------------------------"
+echo "place recovery in 'flash-recovery-from-here' directory"
+echo "ENTER to continue"
+
+	read
+		
+					ls | cat -n
+					
+					echo
+					echo
+					echo
+					echo "Choose file to flash as recovery"
+					echo "---------------------------------------------------"
+					
+					
+					read recnum
+					
+					recovery=`ls | sed -n $recnum'p' `
+					
+						mv $recovery recovery.img
+							
+					 		$adb reboot-bootloader	
+							
+ 							sudo $fboot devices
+					
+				 			#sudo $fboot flash recovery [recovery.img]
+
+									sudo $fboot reboot
+				 				
+				 				echo
+				 				echo
+				 				echo "Recovery flashed press ENTER to return to munky menu"
+						read
+				 				
+				 cd $dir
+				 
+			./munky-rench
 	
 		;;
+
+
+		
 	
 
 
