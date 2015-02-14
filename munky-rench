@@ -930,8 +930,6 @@ rm -rf $dir/zips
 		
 			zip -q -r -0 flashable *
 
-
-				
 				mv $dir/flashable/flashable.zip $dir/zips/flashable.zip
 
 					cd $dir
@@ -1010,7 +1008,7 @@ echo "1)push files to device" #
 echo "2)pull files from device" # 
 
 
-echo "3)backup efs" # 
+echo "3)backup partitions (system/data/efs etc)" # 
 
 
 echo "4)install custom recovery" # 
@@ -1061,7 +1059,7 @@ read
 	
 		;;
 	
-	2)  # pull
+	2)  # pull   broken
 	
 cd $dir/.TOOLS
 
@@ -1071,11 +1069,53 @@ cd $dir/.TOOLS
 ###################################################################################################	
 		;;
 	
-	3)
+	3)  # broken
+	$adb shell
+	cd /dev/block/platform/*/by-name
+	ls | cat -n 
+	
+	echo
+	echo
+	echo "Which partition would you like to copy?"
+	
+		
 	
 		;;
 	
 	4)
+	
+		cd $dir
+			
+			mkdir flash-recovery-from-here
+				
+				cd flash-recovery-from-here
+		
+					ls | cat -n
+					
+					echo
+					echo
+					echo
+					echo "Choose file to flash as recovery"
+					echo "---------------------------------------------------"
+					
+					
+					read recnum
+					
+					recovery=`ls | sed -n $recnum'p'
+					
+						mv $recovery recovery.img
+							
+					 		$adb reboot-bootloader	
+					
+				 				$fboot flash recovery [recovery.img]
+				 				
+				 				echo
+				 				echo
+				 				echo "Recovery flashed press ENTER to return to munky menu"
+				 				
+				 cd $dir
+				 
+			./munky-rench
 	
 		;;
 	
