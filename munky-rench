@@ -156,13 +156,9 @@ echo "9)install app "
 
 echo "10)make flashable zip for system apk"
 echo
-<<<<<<< HEAD
-#echo "11)adb/fastboot, backup/restore/flash"
-||||||| merged common ancestors
-echo "11)adb/fastboot, backup/restore/flash"
-=======
+
 echo "11)adb/fastboot/heimdall, push/pull/flash etc"
->>>>>>> addingthings
+
 echo
 
 echo "89)help and about" 
@@ -999,20 +995,11 @@ echo
 echo "         ADB/FASTBOOT BACKUP/RESTORE/FLASH MENU"	
 echo "------------------------------------------------"
 
-<<<<<<< HEAD
 
-||||||| merged common ancestors
-echo "               8     888b.   888b,   "
-echo "              8 8    8    8  8__ P       "
-echo "             8___8   8    8  8    b     "
-echo "            8     8  888P'   8888'        "
-	 
-echo "------------------------------------------------"
-=======
 echo
 	 
 echo "------------------------------------------------"
->>>>>>> addingthings
+
 echo
 echo
 echo "1)push files to device" # 
