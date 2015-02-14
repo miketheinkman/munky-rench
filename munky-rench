@@ -156,7 +156,7 @@ echo "9)install app "
 
 echo "10)make flashable zip for system apk"
 echo
-echo "11)adb/fastboot, backup/restore/flash"
+#echo "11)adb/fastboot, backup/restore/flash"
 echo
 # echo "12)heimdall"
 # echo
@@ -994,12 +994,7 @@ echo
 echo "         ADB/FASTBOOT BACKUP/RESTORE/FLASH MENU"	
 echo "------------------------------------------------"
 
-echo "               8     888b.   888b,   "
-echo "              8 8    8    8  8__ P       "
-echo "             8___8   8    8  8    b     "
-echo "            8     8  888P'   8888'        "
-	 
-echo "------------------------------------------------"
+
 echo
 echo
 echo "1)push files to device" # 
