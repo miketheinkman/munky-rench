@@ -1069,17 +1069,17 @@ cd $dir/.TOOLS
 
 echo
 echo
-echo "type the path of the file you want to pull and press ENTER"	
-#echo "Do you know the exact location of the file you want to pull? [ y or n ]?"
+echo "Pull files from your device"	
+echo "Do you know the exact location of the file you want to pull? [ y or n ]?"
 
-	#read answer
+	read answer
 
-#if [ $answer = "y" ]
+if [ $answer = "y" ]
 
-	#then
-		#echo
-		#echo
-		#echo "enter complete path of file here and press ENTER"
+	then
+		echo
+		echo
+		echo "enter complete path of file here and press ENTER"
 
 			read path
 
@@ -1093,89 +1093,91 @@ echo "type the path of the file you want to pull and press ENTER"
 
 							./munky-rench
 
-	#elif [ $answer = "n" ]
+	elif [ $answer = "n" ]
 		
-		#then
+	 	then
 
-			#$adb shell ls | cat -n
+			$adb shell ls | cat -n
 				
-				#echo
-				#echo
-				#echo
-				#echo "Is the file you want to pull on this level of the file system [ y or n ]?"
-				#echo
-				#echo 
-				#echo
-				#echo 
+				echo
+				echo
+				echo
+				echo "Is the file you want to pull on this level of the file system [ y or n ]?"
+				echo
+				echo 
+				echo
+				echo 
 
-			#read yorn
+			read yorn
 #
-			#while [ $yorn = "n" ]
+			while [ $yorn = "n" ]
 				
-					#do
+					do
+					
+					
 
-						#echo
-						#echo
-						#echo
-						#echo "enter the number of the directory you want to look in and press ENTER"
-						#echo
-						#echo
+						echo
+						echo
+						echo
+						echo "enter the number of the directory you want to look in and press ENTER"
+						echo
+						echo
 
-							#read dirnum
+							read dirnum
 
-							#newdir=`$adb shell ls | sed -n $dirnum'p' `
+							newdir=`$adb shell ls | sed -n $dirnum'p' `
 
 
 
-							      #   $adb shell cd newdir
+							         $adb shell ls newdir | cat -n
 
 												
 
 										
-						#echo 
-						#echo
-						#echo "Is the file you want to pull on this level of the file system [ y or n ]?"
-						#echo
-						#echo 
-						#echo
-						#echo 
-							#read yorn
+						echo 
+						echo
+						echo "Is the file you want to pull on this level of the file system [ y or n ]?"
+						echo
+						echo 
+						echo
+						echo 
+							read yorn
 
 
-					#done
+					done
 						
 
-			#if [ $yorn = "y" ]
+			if [ $yorn = "y" ]
 		
-				#then
+				then
 
-					#echo
-					#echo
-					#echo
-					#echo "enter the number of the file you want to pull and press ENTER"
-					#echo
-					#echo
-						#read filenum
+					echo
+					echo
+					echo
+					echo "enter the number of the file you want to pull and press ENTER"
+					echo
+					echo
+						read filenum
 
-							#	pullfile=`$adb shell ls | sed -n $filenum'p' `
-								#path=`pwd `
+								pullfile=`$adb shell ls | sed -n $filenum'p' `
+								path=`pwd `
 
-					#$adb devices
+					$adb devices
 
-						#$adb pull $path/pullfile $dir/pulled-files-go-here
-#
-							#echo "files will be in 'pulled-files-go-here' directory"
+						$adb pull $path/pullfile $dir/pulled-files-go-here
+
+							echo "files will be in 'pulled-files-go-here' directory"
 
 													
 					
 
 				
 			
-#fi
+fi
 
 
 
-	#fi	
+	fi	
 	
 		;;
 	
