@@ -1129,7 +1129,7 @@ if [ $answer = "y" ]
 
 
 
-							         $adb shell ls newdir | cat -n
+							         $adb shell ls $newdir | cat -n
 
 												
 
@@ -1159,12 +1159,12 @@ if [ $answer = "y" ]
 					echo
 						read filenum
 
-								pullfile=`$adb shell ls | sed -n $filenum'p' `
-								path=`pwd `
+								pullfile=`$adb shell ls $newdir | sed -n $filenum'p' `
+								path=*/$newdir
 
 					$adb devices
 
-						$adb pull $path/pullfile $dir/pulled-files-go-here
+						$adb pull $path/$pullfile $dir/pulled-files-go-here
 
 							echo "files will be in 'pulled-files-go-here' directory"
 
