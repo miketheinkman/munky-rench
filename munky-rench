@@ -8,7 +8,7 @@
 
 dir=`pwd `
 DESC="Munky Rench is the swiss-army knife of apk modding in Linux"
-VERSION="VERSION 1.0 INITIAL RELEASE"
+VERSION="VERSION 1.1 REMIX"
 
 
 
@@ -157,12 +157,19 @@ echo "9)install app "
 echo "10)make flashable zip for system apk"
 echo
 
-echo "11)adb/fastboot/heimdall, push/pull/flash etc"
+echo "11)adb push"
 
+
+
+echo "12)adb pull"
+
+echo "13)fastboot flash recovery"
+
+echo "14)heimdall flash recovery"
 echo
 
 echo "89)help and about" 
-echo
+
                                                                                
 echo "99)exit" 
 
@@ -980,55 +987,9 @@ fi
 ./munky-rench
 
 	  				;;
+
 	  				
-	11)
-	
-		 esac
-		 
-		 cd $dir/.TOOLS
-	 
-								adb=$dir/.TOOLS/adb
-								fboot=$dir/.TOOLS/fastboot
-	
-echo	
-echo	
-echo "         ADB/FASTBOOT BACKUP/RESTORE/FLASH MENU"	
-echo "------------------------------------------------"
-
-
-echo
-	 
-echo "------------------------------------------------"
-
-echo
-echo
-echo "1)push files to device" # 
-
-
-echo "2)pull files from device" # 
-
-
-echo "3)heimdall flash custom recovery (SAMSUNG)" # 
-
-
-echo "4)fastboot flash custom recovery "
-
-
-
-
-
-
-echo
-echo "-------------------------------------------------"
-echo "What do you want to do?"
-
-
-	read n
-	
-case $n in 
-	
-	
-	1) # push
+	11) # push
 	
 	cd $dir
 		
@@ -1062,7 +1023,10 @@ read
 	
 		;;
 	
-	2)  # pull   
+	
+	
+	
+	12)  # pull   
 
 	
 cd $dir/.TOOLS
@@ -1181,7 +1145,7 @@ echo "type the path of the file you want to pull and press ENTER"
 	
 
 
-	3)
+	13)
 	
 		cd $dir
 			
@@ -1230,7 +1194,7 @@ echo "ENTER to continue"
 	
 		;;
 
-	4)
+	14)
 
 echo
 echo
@@ -1269,7 +1233,7 @@ echo "ENTER to continue"
 							
  							sudo $fboot devices
 					
-				 			#sudo $fboot flash recovery [recovery.img]
+				 			#sudo $fboot flash --no-reboot recovery [recovery.img]
 
 									sudo $fboot reboot
 				 				
@@ -1281,15 +1245,19 @@ echo "ENTER to continue"
 				 cd $dir
 				 
 			./munky-rench
+;;
+
+
 	
-		;;
+
+
 
 
 		
 	
 
 
-esac
+
 
 	89)
 
@@ -1310,7 +1278,7 @@ esac
 		echo "ENTER to continue"
 read
 
-	 esac
+	 
 	 
 	
 	
@@ -1347,10 +1315,12 @@ echo "What do you want to learn about?"
 
 	read n
 	
-case $n in 
+ 
 	
 	
-	1)
+	if [ $n = "1" ]
+
+		then
 	
 	echo
 	echo
@@ -1374,9 +1344,11 @@ echo
 	
 	
 
-			;; 
+		 
 			
-	2)
+	elif [ $n = "2" ]
+
+		then
 		
 	echo
 	echo
@@ -1401,9 +1373,11 @@ read
 
               
 
-			;; 
+			
+	elif [ $n = "3" ]
 
-	3)
+		then
+	
 
 echo
 	echo
@@ -1428,10 +1402,9 @@ echo
 
                 
 
-			;; 
+			elif [ $n = "4" ]
 
-
-	4)
+		then
 
 echo
 	echo
@@ -1448,10 +1421,12 @@ echo
 echo "Zipaligning is the procress of aligning all unarchived information in an apk in a way that the system doesnt have to look for any resources. It is an optimization thet is done for speed and efficiency purposes. Zipaligning must be perfomed last, as other processes will mess up the alignment."
 
 read
-		;;
+		
 	
 
-	5)
+	elif [ $n = "5" ]
+
+		then
 
 	echo
 	echo
@@ -1469,13 +1444,13 @@ read
 	echo
 	echo "And because it was designed by developers to be an open easy platform to develop on. Terminal is better than CMD. Android is based on the linux kernel, so it's all gravy. " 		
 	read
-			;;
-
-
-			esac
 			
-		./munky-rench
 
+fi
+
+cd $dir
+./munky-rench
+		
 			;;    
 	
 
@@ -1484,7 +1459,9 @@ read
 	99)
 
 
-		exit ;;
+		exit 0
+
+exit 1 ;;
 
 
 
