@@ -1,4 +1,4 @@
-#MUNKY RENCH
+# MUNKY RENCH
 is the apk swiss army knife for linux. It will also be as self-contained and noob friendly as possible.
 
 At this time, all listed features function in testing, but I have not incorporated all the features that I have planned for this project. Features include unzip, zip, install frameworks, decompile and recompile, signapk, zipalign, adb install, adb push/pull, fastboot flash recovery, heimdall flash recovery, and a flashable zip generator. 
